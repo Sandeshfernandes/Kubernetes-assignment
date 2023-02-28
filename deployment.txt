@@ -1,0 +1,30 @@
+resources "kubernetes_deployment" "hello world"{
+    metadata {
+        name = "hello world"
+    }
+    spec {
+        selector {
+            match_labels = {
+                "app" = "helloworld"
+            }
+        }
+        replicas = 2
+        template {
+            metadata {
+                labels = {
+                    "app " = "helloworld"
+                }
+            }
+            spec {
+                container{
+                    name = "helloworld"
+                    image=""
+                    port{
+                        container_port = 80
+                    }
+                    }
+                }
+            }
+        }
+    }
+}
